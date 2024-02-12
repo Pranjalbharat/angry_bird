@@ -39,6 +39,7 @@ AngryBird() {
     }
     if(position.x<-width || position.y>game.size.y || position.x>game.size.x){
       game.resetGame();
+    
     }
 
 

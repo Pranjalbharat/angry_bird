@@ -44,7 +44,9 @@ late AngryBird angryBird;
 
   void resetGame() {
   
-    angryBird.position=Vector2(100, 300); 
+    angryBird.position=Vector2(100, 300);
+    angryBird.isthrow=false;
+    
   }
 
     @override
