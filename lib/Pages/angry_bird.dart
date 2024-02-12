@@ -21,8 +21,8 @@ AngryBird() {
     position = Vector2(100, 300); // Set initial position
   }
 
-  void move(Vector2 position){
-    position.add(position);
+  void move(Vector2 pos){
+    position.add(pos);
   }
 
   @override
@@ -30,6 +30,10 @@ AngryBird() {
     super.update(dt);
     if(isthrow){
       move(Vector2(velocityX,velocityY));
+
+    }
+    if(position.x<-width || position.y>game.size.y || position.x>game.size.x){
+      game.resetGame();
     }
 
   }
@@ -39,8 +43,8 @@ AngryBird() {
   // ignore: non_constant_identifier_names
   void Throw(Vector2 coordinates,double velocity){
     isthrow=true;
-    velocityX=coordinates.x;
-    velocityY=coordinates.y;
+    velocityX=(-coordinates.x);
+    velocityY=(-coordinates.y);
     
 
 

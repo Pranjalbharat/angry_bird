@@ -31,11 +31,16 @@ late AngryBird angryBird;
 
     @override
       void onPanUpdate(DragUpdateInfo info) {
+        // print("hello");
       double velocity = info.delta.global.length;
-    velocityText.text = 'Velocity: $velocity'; 
+      velocityText.text = 'Velocity: $velocity'; 
       Vector2 direction = info.delta.global;
       t1.text = "value : $direction"; 
-      angryBird.move(direction);
+      angryBird.Throw(direction,velocity);
+  }
+
+  void resetGame() {
+    angryBird.position=Vector2(100, 300); 
   }
 
 
