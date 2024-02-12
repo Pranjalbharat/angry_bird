@@ -10,6 +10,8 @@ AngryBird() {
     // Call the onLoad function to initialize the sprite
     onLoad();
   }
+  double totalTime=0;
+  double gravity=10.0;
 
   @override
   Future<void> onLoad() async {
@@ -28,13 +30,17 @@ AngryBird() {
   @override
   void update(double dt) {
     super.update(dt);
+    totalTime+=dt;
     if(isthrow){
       move(Vector2(velocityX,velocityY));
+        double positionY = ((velocityY ) * totalTime) +
+          (gravity * totalTime * totalTime / 2);
 
     }
     if(position.x<-width || position.y>game.size.y || position.x>game.size.x){
       game.resetGame();
     }
+
 
   }
   double velocityX=0;

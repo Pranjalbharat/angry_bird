@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:angry_bird/Pages/TargetPyramid.dart';
 import 'package:angry_bird/Pages/angry_bird.dart';
 import 'package:flame/components.dart';
@@ -5,8 +7,9 @@ import 'package:flame/events.dart';
 import 'package:flame/src/components/core/component.dart';
 import 'package:flutter/material.dart';
 import 'package:flame/game.dart';
+import 'package:flutter/services.dart';
 
-class AngryBirdGame extends FlameGame with PanDetector {
+class AngryBirdGame extends FlameGame with PanDetector,KeyboardEvents {
 late AngryBird angryBird;
   TextComponent t1 = TextComponent(
     text: 'Direction : 0',
@@ -40,7 +43,22 @@ late AngryBird angryBird;
   }
 
   void resetGame() {
+  
     angryBird.position=Vector2(100, 300); 
+  }
+
+    @override
+  KeyEventResult onKeyEvent(
+    RawKeyEvent event,
+    Set<LogicalKeyboardKey> keysPressed,
+  ) {
+    final isR = keysPressed.contains(LogicalKeyboardKey.keyR);
+
+    if (isR) {
+      resetGame();
+      return KeyEventResult.handled;
+    }
+    return KeyEventResult.ignored;
   }
 
 
