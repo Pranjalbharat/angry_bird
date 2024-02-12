@@ -5,15 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:flame/game.dart';
 
 class AngryBirdGame extends FlameGame {
-  AngryBirdGame(){
-    initializeGame();
-  }
-  
-  void initializeGame() {
-    final angryBird=AngryBird();
-    add(angryBird);
+  @override
+  Future<void> onLoad() async {
+    await super.onLoad();
 
-    final targetPyramid=TargetPyramid(this);
-    add(targetPyramid);
+    add(
+    AngryBird()
+    );
+    add(
+      TargetPyramid(this)
+    );
   }
+
 }
